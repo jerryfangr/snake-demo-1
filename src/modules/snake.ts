@@ -5,7 +5,7 @@ class Snake {
 
   constructor () {
     this.element = <HTMLElement>document.querySelector('#snake');
-    this.head = <HTMLElement>document.querySelector('#snake>div');
+    this.head = <HTMLElement>document.querySelector('#snake>.snake-head');
     this.bodies = this.element.getElementsByTagName('div');
   }
 
@@ -13,15 +13,31 @@ class Snake {
     return this.head.offsetLeft;
   }
 
-  set x (value:number) {
-    this.head.style.left = value + 'px';
-  }
-
   get y ():number {
     return this.head.offsetTop;
   }
 
-  set (value:number) {
+  set x (value:number) {
+    if (this.x === value) {
+      return;
+    }
+
+    if (value < 0 || value > 290) {
+      throw new Error("the snake hit the wall");
+    }
+
+    this.head.style.left = value + 'px';
+  }
+
+  set y (value:number) {
+    if (this.y === value) {
+      return;
+    }
+
+    if (value < 0 || value > 290) {
+      throw new Error("the snake hit the wall");
+    }
+
     this.head.style.top = value + 'px';
   }
 

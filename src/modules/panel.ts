@@ -11,16 +11,27 @@ class Panel {
     this.levelEle = <HTMLElement>document.querySelector('#level');
     this.maxLevel = maxLevel;
     this.upScore = upScore;
+    this.init();
+  }
+
+  init () {
+    this.scoreEle.textContent = this.score + '';
+    this.levelEle.textContent = this.level + '';
+  }
+
+  get speed (): number {
+    return this.maxLevel - this.level;
   }
 
   addScore () {
-    if (this.score % this.upScore === 0) {
+    if (this.score > 0 && this.score % this.upScore === 0) {
       this.levelUp();
     }
     this.scoreEle.textContent = ++this.score + '';
   }
+
   levelUp () {
-    if (this.level < 10) {
+    if (this.level < this.maxLevel) {
       this.levelEle.textContent = ++this.level + '';
     }
   }

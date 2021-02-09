@@ -33,7 +33,7 @@ main {
     height: 304px;
     border: 2px solid #000;
     position: relative;
-    .snake>.block {
+    .snake>div {
       position: absolute;
       width: 10px;
       height: 10px;
@@ -47,9 +47,10 @@ main {
       width: 10px;
       height: 10px;
       display: flex;
+      border: 0.5px solid @bg-color;
       // flex-direction: row;
-      // flex-wrap: wrap; // 下面一行等效
-      flex-flow: row wrap;
+      // flex-wrap: wrap; 
+      flex-flow: row wrap; // 等效上面两行
       justify-content: space-between;
       align-content: space-between;
       >div{
