@@ -1,23 +1,27 @@
 class Food {
   element: HTMLElement;
+  _x:number;
+  _y:number;
 
   constructor () {
     this.element = <HTMLElement>document.querySelector('#food');
+    this._x = 40;
+    this._y = 40;
   }
 
   get x ():number {
-    return this.element.offsetLeft;
+    return this._x;
   }
 
   get y ():number {
-    return this.element.offsetTop;
+    return this._y;
   }
   
   change () {
-    let left = Math.round(Math.random() * 29) * 10;
-    let top = Math.round(Math.random() * 29) * 10;
-    this.element.style.left = left + 'px';
-    this.element.style.top = top + 'px';
+    this._x = Math.round(Math.random() * 29) * 10;
+    this._y = Math.round(Math.random() * 29) * 10;
+    this.element.style.left = this._x + 'px';
+    this.element.style.top = this._y + 'px';
   }
 }
 

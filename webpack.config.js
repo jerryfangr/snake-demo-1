@@ -4,8 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: "development",
-  devtool: "eval-cheap-module-source-map",
+  mode: "production",
+  // mode: 'development',
+  // devtool: "eval-cheap-module-source-map",
   entry: '/src/index.ts',
   output: {
     filename: '[name].[contenthash].bundle.js',
@@ -23,7 +24,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          'style-loader',  // MiniCssExtractPlugin.loader
+          MiniCssExtractPlugin.loader,  // style-loader
           'css-loader', 
           {
             loader: 'postcss-loader',
@@ -71,6 +72,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'snake | game page',
       template: './src/asserts/index.html'

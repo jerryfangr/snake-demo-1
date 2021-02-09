@@ -118,6 +118,8 @@ class GameControl {
 
   checkEat (x:number, y:number) {
     if (x === this.food.x && y === this.food.y) {
+      console.log('eat ---------------');
+      console.log(this.food.x, this.food.y);
       this.food.change();
       this.panel.addScore();
       this.snake.growUp();
