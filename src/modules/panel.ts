@@ -24,10 +24,10 @@ class Panel {
   }
 
   addScore () {
+    this.scoreEle.textContent = ++this.score + '';
     if (this.score > 0 && this.score % this.upScore === 0) {
       this.levelUp();
     }
-    this.scoreEle.textContent = ++this.score + '';
   }
 
   levelUp () {

@@ -16,6 +16,9 @@ main {
 
 /* config */
 @bg-color: #b7d4a8;
+@border-color: #000;
+@snake-color: #000;
+@food-color: #000;
 
 /* style */
 body {
@@ -26,19 +29,36 @@ main {
   width: 360px;
   height: 420px;
   background-color: @bg-color;
-  border: 10px solid #000;
+  border: 10px solid @border-color;
   border-radius: 20px;
   .stage {
     width: 304px;
     height: 304px;
-    border: 2px solid #000;
+    border: 2px solid @border-color;
     position: relative;
     .snake>div {
       position: absolute;
       width: 10px;
       height: 10px;
-      background-color: #000;
+      background-color: @snake-color;
       border: 0.5px solid @bg-color;
+    }
+    .snake>.snake-head {
+      border: 0.1px solid @bg-color;
+      border-radius: 2px;
+      z-index: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 2px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 50%;
+      }
     }
     .food {
       position: absolute;
@@ -56,7 +76,7 @@ main {
       >div{
         width: 4px;
         height: 4px;
-        background-color: #000;
+        background-color: @food-color;
         transform: rotate(45deg);
       }
     }
